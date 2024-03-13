@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn.discordapp.com/icons/715958380556058684/773d6583cd1d7aef41e701783d353aef.webp?size=128" type="image/x-icon">
+<meta name="description" itemprop="description"
+        content="Play your playlists and favourites tracks, albums, and artists" />
+    <meta name="keywords"
+        content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services" />
+    <link rel="stylesheet" href="{% static "formStyle.css" %}">
+    <title>Youttify</title>
+</head>
+
+</script>
+
+<body>
+
+
+        <div class="signup_header">
+            <a href="" target="_blank">
+            </a>
+        </div>
+
+    <div class="signup_body">
+        {% for data in message %}
+
+        <div class="alert alert-{{data.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message!</strong> {{data}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        {% endfor %}
+            
+        
+        <form action="/signup" class="login_form" method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <span class='label signup-title center-align'>Sign up for free to start listening.</span>
+            <label for="sign-up-username" class="label">User Name</label>l
+            <input type="text" class="form_input" name="username" pattern="[A-Za-z]+" placeholder="Enter your name." required>
+            <label for="sign-up-email" class="label">Email Address</label>
+            <input type="email" class="form_input" name="email" placeholder="Enter your email." required>
+            <label for="sign-up-pwd" class="label">
+                Create a password
+            </label>
+            <input type="password" class="form_input" id="pwd" name="password" placeholder="Create a password."required>
+            <label for="sign-up-cpwd" class="label">Confirm your password</label>
+            <input type="password" class="form_input" id="cpwd" name="confirm-password"
+                placeholder="Re-type your password" required>
+
+            <button class='btn btn_log_in' type="submit">Sign up</button>
+            <div class="divider"></div>
+            <p class='label center-align'>Already have an account?<a href="/login">Log in</a>.</p>
+        </form>
+        
+    </div>
+
+</body>
+
+</html>
